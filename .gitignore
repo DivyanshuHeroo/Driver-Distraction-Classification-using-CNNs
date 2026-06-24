@@ -3,11 +3,13 @@ data/imgs/
 data/*.csv
 data/*.zip
 
-# Trained model weights (large; regenerate via `python -m src.train`)
+# Trained model weights — ignore intermediates, but ship the final model
+# so the repo is self-contained (clone -> run the dashboard without retraining).
 models/*.h5
 models/*.keras
 models/*.pb
 models/saved_model/
+!models/driver_distraction_model.keras
 
 # NOTE: outputs/ result plots, metrics and reports ARE committed on purpose
 # so the README renders results on GitHub.
