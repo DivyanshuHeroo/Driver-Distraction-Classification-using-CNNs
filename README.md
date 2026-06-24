@@ -98,6 +98,13 @@ then 4 epochs of fine-tuning) at **160×160** on a **balanced 6,000-image subset
 | Macro Recall | **0.711** |
 | Macro F1-score | **0.705** |
 
+> ⚠️ These are **development validation scores on a 6,000-image subset with a
+> random split** — a baseline to iterate on, **not** a final, industry-grade
+> accuracy. The random split lets the same driver appear in train and val,
+> which inflates the number (see the reproducibility note below). A
+> **driver-aware split** is the rigorous evaluation and is listed under Future
+> Improvements.
+
 Per-class F1 (hardest vs. easiest behaviors):
 
 | Class | F1 | | Class | F1 |
