@@ -1,0 +1,75 @@
+# =============================================================
+# Configuration for Driver Distraction Classification (CNN)
+# All scripts read their settings from this single file.
+# =============================================================
+
+paths:
+  data_dir: "data/imgs/train"        # Folder containing class subfolders c0..c9
+  test_dir: "data/imgs/test"         # Optional, unlabeled Kaggle test images
+  models_dir: "models"               # Where trained models are saved
+  outputs_dir: "outputs"             # Where plots, reports and metrics are saved
+
+data:
+  image_size: [160, 160]             # Input resolution (H, W) expected by the CNNs
+  channels: 3
+  batch_size: 32
+  validation_split: 0.2              # Fraction of training data used for validation
+  seed: 42
+
+classes:
+  c0: "safe driving"
+  c1: "texting - right hand"
+  c2: "talking on phone - right hand"
+  c3: "texting - left hand"
+  c4: "talking on phone - left hand"
+  c5: "operating the radio"
+  c6: "drinking"
+  c7: "reaching behind"
+  c8: "hair and makeup"
+  c9: "talking to passenger"
+
+# Risk level mapping used by the dashboard / predict module.
+# SAFE = no intervention, MEDIUM = warn, HIGH = strong alert.
+risk_levels:
+  c0: "SAFE"
+  c1: "HIGH"
+  c2: "HIGH"
+  c3: "HIGH"
+  c4: "HIGH"
+  c5: "MEDIUM"
+  c6: "MEDIUM"
+  c7: "HIGH"
+  c8: "MEDIUM"
+  c9: "MEDIUM"
+
+augmentation:
+  rotation_range: 12
+  width_shift_range: 0.10
+  height_shift_range: 0.10
+  zoom_range: 0.15
+  brightness_range: [0.8, 1.2]
+  horizontal_flip: false             # Driver pose is left/right meaningful -> keep false
+
+model:
+  architecture: "mobilenetv2"        # one of: custom_cnn | mobilenetv2 | efficientnetb0
+  dropout: 0.3
+  dense_units: 256
+  freeze_base: true                  # Freeze backbone for the first training stage
+  fine_tune: true                    # Unfreeze top layers for a second stage
+  fine_tune_at: 100                  # Layer index from which to unfreeze the backbone
+
+training:
+  epochs: 12
+  fine_tune_epochs: 4
+  learning_rate: 0.001
+  fine_tune_learning_rate: 0.00001
+  early_stopping_patience: 5
+  reduce_lr_patience: 3
+  reduce_lr_factor: 0.5
+  min_lr: 0.0000001
+
+gradcam:
+  # Last convolutional layer name used to compute Grad-CAM.
+  # Leave empty to auto-detect the last Conv layer.
+  last_conv_layer: ""
+  alpha: 0.4                         # Heatmap overlay opacity

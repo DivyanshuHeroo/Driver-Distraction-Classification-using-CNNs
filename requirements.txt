@@ -1,0 +1,24 @@
+# Tested on Python 3.10–3.13.
+# On Python <=3.12 this resolves to TF 2.12+; on Python 3.13 it resolves to
+# TF 2.20+ (Keras 3). The code supports both Keras 2 and Keras 3.
+
+# Core deep learning
+tensorflow>=2.12
+
+# Numerical / image
+numpy>=1.23
+Pillow>=9.0
+opencv-python>=4.7
+
+# Metrics & ML utilities (pulls in scipy)
+scikit-learn>=1.2
+
+# Plotting
+matplotlib>=3.6
+seaborn>=0.12
+
+# Config
+PyYAML>=6.0
+
+# Dashboard
+streamlit>=1.28

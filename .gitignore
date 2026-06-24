@@ -1,0 +1,27 @@
+# Dataset (never commit the driver images — see data/README.md)
+data/imgs/
+data/*.csv
+data/*.zip
+
+# Trained model weights (large; regenerate via `python -m src.train`)
+models/*.h5
+models/*.keras
+models/*.pb
+models/saved_model/
+
+# NOTE: outputs/ result plots, metrics and reports ARE committed on purpose
+# so the README renders results on GitHub.
+
+# Python / environment
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,18 @@
+{
+  "accuracy": 0.7125,
+  "macro_precision": 0.7548880755674883,
+  "macro_recall": 0.7106997020526691,
+  "macro_f1": 0.70519418001486,
+  "per_class_f1": {
+    "safe driving": 0.672566371681416,
+    "texting - right hand": 0.7253886010362695,
+    "talking on phone - right hand": 0.7104247104247104,
+    "texting - left hand": 0.6354166666666666,
+    "talking on phone - left hand": 0.762962962962963,
+    "operating the radio": 0.8128654970760234,
+    "drinking": 0.6060606060606061,
+    "reaching behind": 0.8387096774193549,
+    "hair and makeup": 0.5968992248062015,
+    "talking to passenger": 0.6906474820143885
+  }
+}
